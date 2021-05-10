@@ -74,10 +74,10 @@ dependencies {
 
 apply plugin: 'com.google.ar.sceneform.plugin'
 
-sceneform.asset('sampledata/models/cow.fbx', // 'Source Asset Path' specified during import.
-        'default',                            // 'Material Path' specified during import.
-        'sampledata/models/cow.sfa',         // '.sfa Output Path' specified during import.
-        'src/main/assets/cow')              // '.sfb Output Path' specified during import.
+sceneform.asset('sampledata/models/', // 'Source Asset Path' specified during import.
+        'default',                          // 'Material Path' specified during import.
+        'sampledata/models/',         // '.sfa Output Path' specified during import.
+        'src/main/assets/')              // '.sfb Output Path' specified during import.
 
 
 
