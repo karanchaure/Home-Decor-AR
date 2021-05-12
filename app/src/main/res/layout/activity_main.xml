@@ -25,81 +25,114 @@
         android:layout_marginTop="605dp"
         android:layout_marginBottom="0dp" />
 
-    <Button
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/download"
-        android:layout_width="178dp"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="233dp"
-        android:background="@android:color/holo_orange_light"
-        android:text="Download" />
+        android:layout_marginStart="34dp"
+        android:layout_marginLeft="34dp"
+        android:layout_marginEnd="198dp"
+        android:backgroundTint="@color/cardview_light_background"
+        android:text="Download"
+        app:cornerRadius="15dp"
+        app:icon="@drawable/download"
+        app:iconSize="20dp" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/delete"
-        android:layout_width="178dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="234dp"
-        android:layout_marginEnd="0dp"
-        android:background="@android:color/holo_red_light"
-        android:text="delete" />
-
-    <Button
-        android:id="@+id/shape"
-        android:layout_width="193dp"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="69dp"
-        android:layout_marginEnd="220dp"
-        android:layout_marginRight="220dp"
-        android:layout_marginBottom="604dp"
-        android:text="shape" />
+        android:layout_marginStart="347dp"
+        android:layout_marginLeft="347dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/cardview_light_background"
 
-    <Button
-        android:id="@+id/shape2"
-        android:layout_width="193dp"
+        app:cornerRadius="15dp"
+        app:icon="@drawable/delete"
+        app:iconSize="25dp"
+        app:iconTint="#A52121"
+
+
+        />
+
+    <SeekBar
+        android:id="@+id/sb_size"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="134dp"
-        android:layout_marginEnd="225dp"
-        android:layout_marginRight="225dp"
-        android:layout_marginBottom="539dp"
-        android:text="shape2" />
+        android:layout_marginTop="550dp"
 
-    <Button
+
+
+
+        ></SeekBar>
+
+    <!--    <Button-->
+<!--        android:id="@+id/shape"-->
+<!--        android:layout_width="193dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginStart="0dp"-->
+<!--        android:layout_marginLeft="0dp"-->
+<!--        android:layout_marginTop="69dp"-->
+<!--        android:layout_marginEnd="220dp"-->
+<!--        android:layout_marginRight="220dp"-->
+<!--        android:layout_marginBottom="604dp"-->
+<!--        android:text="shape" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/shape2"-->
+<!--        android:layout_width="193dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginStart="0dp"-->
+<!--        android:layout_marginLeft="0dp"-->
+<!--        android:layout_marginTop="134dp"-->
+<!--        android:layout_marginEnd="225dp"-->
+<!--        android:layout_marginRight="225dp"-->
+<!--        android:layout_marginBottom="539dp"-->
+<!--        android:text="shape2" />-->
+
+   
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/change"
-        android:layout_width="174dp"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="238dp"
-        android:layout_marginLeft="238dp"
-        android:layout_marginTop="61dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginBottom="612dp"
-        android:text="change" />
+        android:layout_marginStart="280dp"
+        android:layout_marginLeft="280dp"
+        android:layout_marginEnd="77dp"
+        android:backgroundTint="@color/cardview_light_background"
+
+        app:cornerRadius="15dp"
+        app:icon="@drawable/paintbrush"
+        app:iconSize="25dp"
+       />
+
+
+        />
 
 
 </RelativeLayout>

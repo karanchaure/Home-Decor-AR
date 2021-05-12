@@ -36,6 +36,7 @@ import java.util.List;
 
 public class MyAdapter extends FirebaseRecyclerAdapter <Models,MyAdapter.myviewholder > {
     private static OnItemClickListener mListener;
+    final String TAG="Myadapter";
 
 
 
@@ -45,12 +46,15 @@ public class MyAdapter extends FirebaseRecyclerAdapter <Models,MyAdapter.myviewh
 
     @Override
     protected void onBindViewHolder(@NonNull myviewholder holder, int position, @NonNull final Models model) {
-        Log.d("myTag", "This is my message text"+model.getText());
-        Log.d("myTag", "This is my message img"+model.getImage());
-        Log.d("myTag", "This is my message ID "+model.getId());
+        Log.d(TAG, "This is my message text"+model.getText());
+        Log.d(TAG, "This is my message img"+model.getImage());
+        Log.d(TAG, "This is my message ID "+model.getId());
 
         mListener.sendstring(model.getId());
         Picasso.get().load(model.getImage()).into(holder.image);
+        String ID=model.getId();
+        MainActivity main=new MainActivity();
+        main.listmodel2.add(ID);
        /* myviewholder view1=new myviewholder();
         view1.addmodel(model.getId());*/
        // myviewholder.addmodel("wow");
@@ -59,7 +63,7 @@ public class MyAdapter extends FirebaseRecyclerAdapter <Models,MyAdapter.myviewh
    /*  holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("myTag", "This is my id "+model.getId());
+                Log.d(TAG, "This is my id "+model.getId());
              */ /* ARFragment arobj= new ARFragment(model.getId());*/
            //     name=model.getId();
          /*   MainActivity main= new MainActivity();
