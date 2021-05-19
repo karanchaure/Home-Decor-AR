@@ -662,6 +662,7 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.OnItemC
             Anchor anchor= hitResult.createAnchor();
             d(TAG,"node="+anchor);
             AnchorNode anchornode = new AnchorNode(anchor);
+            last_anchor_node=anchornode;
             d(TAG,"last current node ="+last_anchor_node);
             anchornode.setParent(arFragment.getArSceneView().getScene());
             TransformableNode transformableNode = new TransformableNode(arFragment.getTransformationSystem());
@@ -816,16 +817,17 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.OnItemC
          //   nodeToremove.getAnchor().detach();
             nodeToremove.setParent(null);
             nodeToremove = null;
-            d(TAG, "removeAnchorNode: Deleted node successfully");
+            d(TAG, "removeAnchorNode: hitresult: Deleted node successfully");
           //  numberOfAnchors--;
             //Toast.makeText(LineViewMainActivity.this, "Test Delete - markAnchorNode removed", Toast.LENGTH_SHORT).show();
         } else if(last_anchor_node !=null){
             arFragment.getArSceneView().getScene().removeChild(last_anchor_node);
             //  anchorNodeList.remove(nodeToremove);
+            d(TAG, "removeAnchorNode: lastanchor: Deleted node successfully"+last_anchor_node);
                last_anchor_node.getAnchor().detach();
             last_anchor_node.setParent(null);
             last_anchor_node = null;
-            d(TAG, "removeAnchorNode: Deleted node successfully");
+            d(TAG, "removeAnchorNode: lastanchor: Deleted node successfully");
             //  numberOfAnchors--;
         }else {
             Toast.makeText(MainActivity.this, "Delete - no node selected! Touch a node to select it.", Toast.LENGTH_SHORT).show();
