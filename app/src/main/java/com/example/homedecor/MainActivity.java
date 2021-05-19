@@ -483,8 +483,8 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.OnItemC
             extension = name + ".glb";
             FirebaseApp.initializeApp(this);
 //Firebase storage model reference were models are stored.
-            FirebaseStorage storage = FirebaseStorage.getInstance();
-            StorageReference modelRef = storage.getReference().child(extension);
+            FirebaseStorage storage = FirebaseStorage.getInstance();//this is object of firebasestorage class
+            StorageReference modelRef = storage.getReference().child(extension);//getting the reference of the storage location
             // StorageReference modelRef1 = storage.getReference();
             findViewById(R.id.download)
                     .setOnClickListener(v -> {
@@ -500,6 +500,7 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.OnItemC
                             position_list.add(position);
                             d(TAG, "try:position list " + position_list);
                             d(TAG, "List:" + listmodel);
+                            //downloading the models from firebase storage
                             modelRef.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {

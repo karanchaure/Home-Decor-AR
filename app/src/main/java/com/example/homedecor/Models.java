@@ -1,5 +1,8 @@
 package com.example.homedecor;
 
+
+///This class is used to get database attributes value such as models ID,image URL, and TEXT from google forebase DB.
+//and this class will me used to populate the Recycler CArd view present at bottom of screen shows Models image.
 public class Models {
     String image,text,id;
 
@@ -15,15 +18,15 @@ public class Models {
 
 
     }
-
+//to get ID of Model
     public String getId() {
         return id;
     }
-
+//to set ID of MODel
     public void setId(String id) {
         this.id = id;
     }
-
+//similar to ID
     public String getImage() {
         return image;
     }

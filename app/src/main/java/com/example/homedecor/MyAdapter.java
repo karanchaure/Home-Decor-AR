@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
+//This class is used to populate the Recycler card view present at bottom of screen .it will keep on check thing database value while scrolling horizontally.
 public class MyAdapter extends FirebaseRecyclerAdapter <Models,MyAdapter.myviewholder > {
     private static OnItemClickListener mListener;
     final String TAG="Myadapter";
@@ -103,7 +103,7 @@ public class MyAdapter extends FirebaseRecyclerAdapter <Models,MyAdapter.myviewh
     }
 
 
-
+//myviewhilder is useo populate the image present in cardview
     public static class myviewholder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
         public static ArraySet<String> listmodel;
@@ -124,7 +124,7 @@ public class MyAdapter extends FirebaseRecyclerAdapter <Models,MyAdapter.myviewh
 
 
 
-
+//onclick will check which model is click and tell its position for downloading
        @Override
         public void onClick(View v){
             if (mListener!=null){
