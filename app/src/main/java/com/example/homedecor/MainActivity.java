@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.OnItemC
 
         recyclerView.setAdapter(adapter);
         filename_image_id_dic.put("woodentable", 3);
-        filename_image_id_dic.put("chair", 2);
+        filename_image_id_dic.put("chair", 3);
         filename_image_id_dic.put("bedsidetable", 3);
 //        findViewById(R.id.shape).setOnClickListener(new View.OnClickListener() {
 //            @Override
