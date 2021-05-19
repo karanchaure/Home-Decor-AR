@@ -64,17 +64,71 @@
 
         />
 
-    <SeekBar
-        android:id="@+id/sb_size"
-        android:layout_width="match_parent"
+<!--    <SeekBar-->
+<!--        android:id="@+id/sb_size"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="250dp"-->
+<!--        android:min="40"-->
+<!--        android:max="100"-->
+<!--        android:progress="70"-->
+<!--        android:rotation="270"-->
+
+
+<!--        ></SeekBar>-->
+
+<!--    <SeekBar-->
+<!--        android:id="@+id/sb_rotate"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:layout_marginLeft="32dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:padding="32dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.0"-->
+<!--        -->
+
+
+<!--        />-->
+
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/slider_rotate"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="550dp"
+        android:layout_marginTop="510dp"
+
+        android:paddingLeft="20dp"
+        android:value="0"
+        android:valueFrom="-180"
+
+        android:paddingTop="100dp"
+        android:paddingVertical="10dp"
+
+        android:valueTo="180"
+
+        />
+    <com.google.android.material.slider.Slider
+        android:id="@+id/slider_scale"
+        android:layout_width="wrap_content"
+        android:layout_height="5dp"
+        android:layout_marginTop="555dp"
+
+        android:paddingLeft="20dp"
+
+        android:valueFrom="40"
+        android:valueTo="100"
+        ></com.google.android.material.slider.Slider>
 
 
 
 
-        ></SeekBar>
+<!--        android:valueTo="180"-->
 
+<!--        />-->
     <!--    <Button-->
 <!--        android:id="@+id/shape"-->
 <!--        android:layout_width="193dp"-->
@@ -94,7 +148,7 @@
 <!--        android:text="shape" />-->
 
 <!--    <Button-->
-<!--        android:id="@+id/shape2"-->
+<!--        android:id="@+id/shape"-->
 <!--        android:layout_width="193dp"-->
 <!--        android:layout_height="wrap_content"-->
 <!--        android:layout_alignParentStart="true"-->
@@ -131,8 +185,39 @@
         app:iconSize="25dp"
        />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/arFragment"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="509dp"
+        android:layout_marginBottom="77dp"
+        android:text="Rotate"
+        android:textColor="#FFFFFF"/>
 
-        />
+
+    />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/arFragment"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="555dp"
+        android:layout_marginBottom="31dp"
+        android:text="Scale"
+        android:textColor="#FFFFFF" />
+
+
+    />
+
+
 
 
 </RelativeLayout>

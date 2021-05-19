@@ -18,11 +18,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.slider.Slider;
 import com.google.ar.core.Anchor;
 import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.HitTestResult;
 import com.google.ar.sceneform.Node;
 import com.google.ar.sceneform.assets.RenderableSource;
+import com.google.ar.sceneform.math.Quaternion;
 import com.google.ar.sceneform.math.Vector3;
 import com.google.ar.sceneform.rendering.MaterialFactory;
 import com.google.ar.sceneform.rendering.ModelRenderable;
@@ -73,6 +75,9 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.OnItemC
     AnchorNode last_anchor_node = null, myanchornode;
     Node hitNode = null;
     SeekBar sb_size;
+    SeekBar sb_rotate;
+    Slider slider_rotate,slider_scale;
+    float mySize = 70f;
     Dictionary<ModelRenderable, String> renderable_id_dic = new Hashtable<ModelRenderable, String>();
     Dictionary<String, ModelRenderable> save_renderable_dic = new Hashtable<String, ModelRenderable>();
     Dictionary<String, Integer> filename_image_id_dic = new Hashtable<String, Integer>();
@@ -88,8 +93,14 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.OnItemC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        sb_size = (SeekBar) findViewById(R.id.sb_size);
-        sb_size.setEnabled(false);
+//        sb_size = (SeekBar) findViewById(R.id.sb_size);
+//        sb_size.setEnabled(false);
+//        sb_rotate = (SeekBar) findViewById(R.id.sb_rotate);
+//        sb_rotate.setEnabled(false);
+        slider_rotate = findViewById(R.id.slider_rotate);
+        slider_scale = findViewById(R.id.slider_scale);
+
+
 
         download = findViewById(R.id.download);
         change = findViewById(R.id.change);
@@ -136,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.OnItemC
 //
 //            }
 //        });
-//        findViewById(R.id.shape2).setOnClickListener(new View.OnClickListener() {
+//        findViewById(R.id.shape).setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
 //                //shape
@@ -218,28 +229,146 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.OnItemC
             }
         });
 
-        sb_size.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+//        sb_size.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+//            @Override
+//            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+//                // mySize = progress;
+//                if (hitNode != null) {
+//                    try {
+//                        d(TAG, "onProgressChanged: anchornode:" + hitNode.getParent() + "pROGRESS:" + progress);
+//                        //    d(TAG,"="+(float) (progress/10));
+//                        TransformableNode temp= (TransformableNode) hitNode;
+//                        // sb_size
+//                        mySize=progress;
+//                        d(TAG,"mysize="+mySize+"progress="+progress/70f);
+//                        myanchornode = (AnchorNode) hitNode.getParent();
+//                        // temp.getScaleController().setMaxScale(0.2000f);
+//                        myanchornode.setLocalScale(new Vector3(progress/70f, progress/70f, progress/70f));
+//
+//                        //    last_anchor_node.getLocalScale(new );
+//
+//                    }catch (Exception e){
+//                        d(TAG, "onProgressChanged: Exception "+e);
+//                   //     Toast.makeText(this, "Please Select Model", Toast.LENGTH_SHORT).show();;
+//
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onStartTrackingTouch(SeekBar seekBar) {
+//
+//            }
+//
+//            @Override
+//            public void onStopTrackingTouch(SeekBar seekBar) {
+//            }
+//        });
+//
+//        sb_rotate.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+//            @Override
+//            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+//                // mySize = progress;
+//                if (hitNode != null) {
+//                    try {
+//                        d(TAG, " Rotate onProgressChanged: anchornode:" + hitNode.getParent() + "pROGRESS:" + progress);
+//                        //    d(TAG,"="+(float) (progress/10));
+//                        TransformableNode temp = (TransformableNode) hitNode;
+//                        // sb_size
+//                        //  mySize=progress;
+//                        //  d(TAG,"mysize="+mySize+"progress="+progress/70f);
+//                      //  myanchornode = (AnchorNode) hitNode.getParent();
+//                        // temp.getScaleController().setMaxScale(0.2000f);
+//                        // myanchornode.setLocalRotation(Quaternion.axisAngle(new Vector3(1f, 0, 0), 90f));
+//                        temp.setLocalRotation(Quaternion.axisAngle(new Vector3(0, 1f, 0), progress * 1f));
+//                        //    last_anchor_node=.getLocalScale(new );
+//                    }catch(Exception e){
+//                        d(TAG, "onProgressChanged: Exception "+e);
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onStartTrackingTouch(SeekBar seekBar) {
+//            }
+//
+//            @Override
+//            public void onStopTrackingTouch(SeekBar seekBar) {
+//            }
+//        });
+
+        slider_rotate.addOnSliderTouchListener(new Slider.OnSliderTouchListener(){
+
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                // mySize = progress;
+            public void onStartTrackingTouch(@NonNull  Slider slider) {
+                slider.setTrackHeight(50);
+            }
+
+            @Override
+            public void onStopTrackingTouch(@NonNull  Slider slider) {
+                slider.setTrackHeight(11);
+            }
+        });
+        slider_scale.addOnSliderTouchListener(new Slider.OnSliderTouchListener(){
+
+            @Override
+            public void onStartTrackingTouch(@NonNull  Slider slider) {
+                slider.setTrackHeight(50);
+            }
+
+            @Override
+            public void onStopTrackingTouch(@NonNull  Slider slider) {
+                slider.setTrackHeight(11);
+            }
+        });
+
+        slider_rotate.addOnChangeListener(new Slider.OnChangeListener() {
+            @Override
+            public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
                 if (hitNode != null) {
+                    try {
+                        d(TAG, " Rotate onProgressChanged: anchornode:" + hitNode.getParent() + "Slider" +slider+" value"+value);
+                        //    d(TAG,"="+(float) (progress/10));
+                        TransformableNode temp = (TransformableNode) hitNode;
 
-                    d(TAG, "onProgressChanged: anchornode:" + hitNode.getParent() + "pROGRESS:" + progress);
-                    TransformableNode temp;
-                    temp = (TransformableNode) hitNode.getParent();
-                    temp.setLocalScale(new Vector3(progress,progress,progress));
-                    //    last_anchor_node.getLocalScale(new );
-
+                        // sb_size
+                        //  mySize=progress;
+                        //  d(TAG,"mysize="+mySize+"progress="+progress/70f);
+                        //  myanchornode = (AnchorNode) hitNode.getParent();
+                        // temp.getScaleController().setMaxScale(0.2000f);
+                        // myanchornode.setLocalRotation(Quaternion.axisAngle(new Vector3(1f, 0, 0), 90f));
+                        temp.setLocalRotation(Quaternion.axisAngle(new Vector3(0, 1f, 0), value* 1f));
+                        //    last_anchor_node=.getLocalScale(new );
+                    }catch(Exception e){
+                        d(TAG, "onProgressChanged: Exception "+e);
+                    }
 
                 }
             }
-
+        });
+        slider_scale.addOnChangeListener(new Slider.OnChangeListener() {
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
+            public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
+                if (hitNode != null) {
+                    try {
+                        d(TAG, "onProgressChanged: anchornode:" + hitNode.getParent() + "value:" +value);
+                        //    d(TAG,"="+(float) (progress/10));
+                        TransformableNode temp= (TransformableNode) hitNode;
+                        // sb_size
+                        mySize=value;
+                        d(TAG,"mysize="+mySize+"value="+value/70f);
+                        myanchornode = (AnchorNode) hitNode.getParent();
+                        // temp.getScaleController().setMaxScale(0.2000f);
+                        myanchornode.setLocalScale(new Vector3(value/70f, value/70f, value/70f));
 
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+                        //    last_anchor_node.getLocalScale(new );
+
+                    }catch (Exception e){
+                        d(TAG, "onProgressChanged: Exception "+e);
+                        //     Toast.makeText(this, "Please Select Model", Toast.LENGTH_SHORT).show();;
+
+                    }
+                }
             }
         });
     }
@@ -321,15 +450,16 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.OnItemC
                 last_anchor_node=anchorNode;
                 TransformableNode transformableNode = new TransformableNode(arFragment.getTransformationSystem());
                 transformableNode.setParent(anchorNode);
-                transformableNode.getScaleController().setMaxScale(0.2f);
-                transformableNode.getScaleController().setMinScale(0.5f);
+
+//                    transformableNode.getScaleController().setMinScale(0.05f);
+//                    transformableNode.getScaleController().setMaxScale(0.6f);
                 transformableNode.setLocalScale(new Vector3(0.1f, 0.1f, 0.1f));
                 sample_model=save_renderable_dic.get(name);
                 sample_model_copy=sample_model.makeCopy();
                 last_renderable=sample_model_copy;
                 transformableNode.setRenderable(sample_model_copy);
                 renderable_id_dic.put(sample_model_copy,name);
-                sb_size.setEnabled(true);
+//                sb_size.setEnabled(true);
                 transformableNode.select();
                  //   sb_size.setEnabled(true);
                 d(TAG, "onItemClick:trans node= "+transformableNode+"renderable"+transformableNode.getRenderable());
@@ -413,31 +543,37 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.OnItemC
 
 
 
-                    if(sample_model != null) {
+               //     if(sample_model != null) {
+
                         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
+                            try{
                             AnchorNode anchorNode = new AnchorNode(hitResult.createAnchor());
-                    // anchorNode.setRenderable(renderable);
-                    last_anchor_node = anchorNode;
-                    TransformableNode transformableNode = new TransformableNode(arFragment.getTransformationSystem());
-                    transformableNode.setParent(anchorNode);
+                            // anchorNode.setRenderable(renderable);
+                            last_anchor_node = anchorNode;
+                            TransformableNode transformableNode = new TransformableNode(arFragment.getTransformationSystem());
+                            transformableNode.setParent(anchorNode);
+//                                transformableNode.getScaleController().setMinScale(0.05f);
+//                                transformableNode.getScaleController().setMaxScale(0.6f);
+                            transformableNode.setLocalScale(new Vector3(0.1f, 0.1f, 0.1f));
+                            d(TAG, "onItemClick:renderable:" + renderable);
+                            sample_model = renderable;
+                            d(TAG, "onItemClick: sample model:" + sample_model);
+                            sample_model_copy = sample_model.makeCopy();
+                            last_renderable = sample_model_copy;
+                            transformableNode.setRenderable(sample_model_copy);
+                            renderable_id_dic.put(sample_model_copy, name);
+                            transformableNode.select();
+//                            sb_size.setEnabled(true);
 
-                    transformableNode.setLocalScale(new Vector3(0.1f, 0.1f, 0.1f));
-                    d(TAG, "onItemClick:renderable:" + renderable);
-                    sample_model = renderable;
-                    d(TAG, "onItemClick: sample model:" + sample_model);
-                    sample_model_copy = sample_model.makeCopy();
-                    last_renderable = sample_model_copy;
-                    transformableNode.setRenderable(sample_model_copy);
-                    renderable_id_dic.put(sample_model_copy, name);
-                    transformableNode.select();
-                   sb_size.setEnabled(true);
+                            d(TAG, "onItemClick:trans node= " + transformableNode + "renderable" + transformableNode.getRenderable());
+                            d(TAG, "onItemClick:last node= " + last_anchor_node + "renderable" + last_anchor_node.getRenderable());
 
-                    d(TAG, "onItemClick:trans node= " + transformableNode + "renderable" + transformableNode.getRenderable());
-                    d(TAG, "onItemClick:last node= " + last_anchor_node + "renderable" + last_anchor_node.getRenderable());
-
-                    arFragment.getArSceneView().getScene().addChild(anchorNode);
-                    });
-                }
+                            arFragment.getArSceneView().getScene().addChild(anchorNode);
+                          }catch (Exception e){
+                                d(TAG, "onItemClick: Exception"+e);
+                            }
+                        });
+              //  }
 
         }
 
@@ -520,6 +656,7 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.OnItemC
                             toast.show();
                             return null;
                         });
+        try{
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
             Anchor anchor= hitResult.createAnchor();
@@ -531,14 +668,22 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.OnItemC
             d(TAG,"Trans node ="+transformableNode);
             transformableNode.setParent(anchornode);
 //            d(TAG,"sample model ="+sample_model2);
-//            sample_model_copy=sample_model2.makeCopy();
+            sample_model_copy=sample_model.makeCopy();
             d(TAG,"sample model copy ="+sample_model_copy);
             renderable_id_dic.put(sample_model_copy,file_name="bedsidetable" );
+            transformableNode.getScaleController().setMinScale(0.05f);
+            transformableNode.getScaleController().setMaxScale(0.6f);
+            transformableNode.setLocalScale(new Vector3(mySize/70f, mySize/70f, mySize/70f));
             transformableNode.setRenderable(sample_model_copy);
+//            sb_size.setEnabled(true);
+//            sb_rotate.setEnabled(true);
             //  ArFragment arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
             transformableNode.select();
             d(TAG,"renderable dic"+renderable_id_dic);
    });
+        }catch(Exception e){
+            d(TAG, "shape2: exception"+e);
+        }
     }
 
     public int change(int selected_rendarable_count,String selected_rendarable_name ){
@@ -557,7 +702,7 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.OnItemC
 
                                     d(TAG, "inside change else change sample =" + sample_model);
                                     //sample_model2 = sample_model.makeCopy();
-                                    Toast.makeText(this, "Indise if x=" + x, Toast.LENGTH_SHORT).show();
+
                                     // sample_model.getMaterial().setTexture(MaterialFactory.MATERIAL_TEXTURE, texture);
                                     // sample_model2= (ModelRenderable) current_anchor_node.getRenderable().makeCopy();
                                     renderable = (ModelRenderable) hitNode.getRenderable();
@@ -593,7 +738,7 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.OnItemC
 
                                     d(TAG, "inside change else change sample =" + sample_model);
                                     //sample_model2 = sample_model.makeCopy();
-                                    Toast.makeText(this, "Indise if x=" + x, Toast.LENGTH_SHORT).show();
+
                                     // sample_model.getMaterial().setTexture(MaterialFactory.MATERIAL_TEXTURE, texture);
                                     // sample_model2= (ModelRenderable) current_anchor_node.getRenderable().makeCopy();
                                    renderable = (ModelRenderable) hitNode.getRenderable();
@@ -638,11 +783,11 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.OnItemC
                 .setRegistryId(file.getPath())
                 .build()
                 .thenAccept(modelRenderable -> {
-                    Toast.makeText(this, "Model built "+name, Toast.LENGTH_SHORT).show();;
+                    Toast.makeText(this, "Model built successfull"+name, Toast.LENGTH_SHORT).show();
 
                     renderable = modelRenderable;
 
-                    d(TAG, "buildModel: successfull Model:"+renderable);
+                    d(TAG, "buildModel:Build Successfull:"+renderable);
                     save_renderable_dic.put(name,renderable);
                 });
         sample_model=null;
